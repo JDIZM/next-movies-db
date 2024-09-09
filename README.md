@@ -30,7 +30,7 @@ Tooling:
 - [pnpm](https://pnpm.io/)
 - [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
-- [Zod](https://zod.dev/)
+- [Zod](https://zod.dev/) _not implemented yet_
 
 ## Getting Started
 
