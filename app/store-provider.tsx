@@ -27,6 +27,5 @@ export const StoreProvider = ({ children }: Properties) => {
     }
   }, []);
 
-  console.log('store provider..');
   return <Provider store={storeReference.current}>{children}</Provider>;
 };

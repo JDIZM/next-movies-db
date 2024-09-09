@@ -9,8 +9,6 @@ export async function GET(request: NextRequest, context: { params: { id: string 
 
   const { id } = context.params;
 
-  console.log('id', id);
-
   const url = new URL(`${apiUrl}movie/${id}`);
 
   const response = await fetch(url, {

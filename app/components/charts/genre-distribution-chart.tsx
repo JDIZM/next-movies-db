@@ -1,7 +1,7 @@
 'use client';
 import { useGenreDistributionQuery } from '@/lib/features/movies/moviesSlice';
-import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
-import { ChartContainer } from '@/app/components/charts/chart';
+import { PieChart, Pie, Cell } from 'recharts';
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/app/components/charts/chart';
 
 const COLORS = [
   '#0088FE',
@@ -18,7 +18,7 @@ const COLORS = [
 const chartConfig = {
   genreDistribution: {
     label: 'Genre Distribution',
-    color: 'hsl(var(--p))',
+    color: '#2563eb',
   },
 };
 
@@ -34,34 +34,33 @@ export function GenreDistributionChart() {
     );
 
   return (
-    <section className='py-10'>
-      <h2 className='mb-6 text-3xl font-bold'>Genre Distribution</h2>
-      <ChartContainer
-        config={chartConfig}
-        className='aspect-[16/9] w-full rounded-box bg-base-200 p-4'
-      >
-        <ResponsiveContainer width='100%' height='100%'>
-          <PieChart>
-            <Pie
-              data={data}
-              cx='50%'
-              cy='50%'
-              labelLine={false}
-              outerRadius={80}
-              fill='#8884d8'
-              dataKey='value'
-              label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
-            >
-              {data?.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-            <Tooltip />
-            <Legend />
-          </PieChart>
-        </ResponsiveContainer>
-      </ChartContainer>
-    </section>
+    <ChartContainer
+      config={chartConfig}
+      className='min-h-[300px] w-full max-w-[300px] md:max-w-full'
+    >
+      <PieChart>
+        <Pie
+          data={data}
+          cx='50%'
+          cy='50%'
+          labelLine={false}
+          outerRadius='80%'
+          fill='var(--color-genreDistribution)'
+          dataKey='value'
+          label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+          className='text-white'
+        >
+          {data?.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+        <ChartTooltip
+          content={
+            <ChartTooltipContent className='rounded-lg bg-gray-800 p-2 text-white shadow-lg' />
+          }
+        />
+      </PieChart>
+    </ChartContainer>
   );
 }
 

@@ -26,39 +26,37 @@ export function PopularMoviesChart() {
       <h2 className='mb-6 text-3xl font-bold'>Popular Movies Over Time</h2>
       <ChartContainer
         config={chartConfig}
-        className='aspect-[16/9] w-full rounded-box bg-base-200 p-4'
+        className='min-h-[200px] w-full rounded-box bg-base-200 p-4'
       >
-        <ResponsiveContainer width='100%' height='100%'>
-          <LineChart
-            data={data}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray='3 3' stroke='hsl(var(--bc) / 0.2)' />
-            <XAxis
-              dataKey='month'
-              allowDuplicatedCategory={false}
-              interval='preserveStartEnd'
-              tickLine={true}
-              axisLine={true}
-              stroke='hsl(var(--bc))'
-            />
-            <YAxis stroke='hsl(var(--bc))' />
-            <ChartTooltip />
-            <Line
-              type='monotone'
-              dataKey='avgPopularity'
-              stroke='var(--color-avgPopularity)'
-              strokeWidth={2}
-              dot={false}
-              activeDot={{ r: 8, fill: 'var(--color-avgPopularity)' }}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+        <LineChart
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray='3 3' stroke='hsl(var(--bc) / 0.2)' />
+          <XAxis
+            dataKey='month'
+            allowDuplicatedCategory={false}
+            interval='preserveStartEnd'
+            tickLine={true}
+            axisLine={true}
+            stroke='hsl(var(--bc))'
+          />
+          <YAxis stroke='hsl(var(--bc))' />
+          <ChartTooltip />
+          <Line
+            type='monotone'
+            dataKey='avgPopularity'
+            stroke='var(--color-avgPopularity)'
+            strokeWidth={2}
+            dot={false}
+            activeDot={{ r: 8, fill: 'var(--color-avgPopularity)' }}
+          />
+        </LineChart>
       </ChartContainer>
     </section>
   );
