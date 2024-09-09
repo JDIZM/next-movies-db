@@ -1,0 +1,12 @@
+{
+  "extends": ["next/core-web-vitals", "plugin:unicorn/recommended", "prettier"],
+  "rules": {
+    "unicorn/filename-case": [
+      "error",
+      {
+        "cases": { "kebabCase": true },
+        "ignore": ["\\.ts$"]
+      }
+    ]
+  }
+}
