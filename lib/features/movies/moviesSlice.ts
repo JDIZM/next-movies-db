@@ -39,6 +39,10 @@ export const moviesApiSlice = createApi({
       query: () => `/movies/genre-distribution`,
       providesTags: ['GenreDistribution'],
     }),
+    getMovieById: build.query<Movie, string>({
+      query: (id) => `/movies/${id}`,
+      providesTags: (result, error, id) => [{ type: 'Movies', id }],
+    }),
   }),
 });
 
@@ -48,4 +52,5 @@ export const {
   useTrendingMoviesQuery,
   usePopularMoviesOverTimeQuery,
   useGenreDistributionQuery,
+  useGetMovieByIdQuery,
 } = moviesApiSlice;

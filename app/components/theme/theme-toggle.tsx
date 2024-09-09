@@ -3,27 +3,19 @@ import { useTheme } from '@/app/hooks/use-theme';
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
-  const swapName = theme === 'cupcake' ? 'swap-off' : 'swap-on';
 
   const toggleTheme = () => {
-    console.log('toggle theme from..', theme);
-    setTheme(theme === 'cupcake' ? 'dark' : 'cupcake'); // Example toggle between 'cupcake' and 'dark'
+    setTheme(theme === 'cupcake' ? 'dark' : 'cupcake');
   };
 
   return (
     <label className='swap swap-rotate'>
-      {/* this hidden checkbox controls the state */}
-      {/* TODO why does the value set the theme? eg dark sticks on dark? 
-      does this mean the theme toggle is not needed?
-      */}
       <input
         type='checkbox'
         className='theme-controller'
         value={theme}
         onClick={() => toggleTheme()}
       />
-
-      {/* TODO these need to be reversed/swapped when the default is set. */}
 
       {/* sun icon */}
       <svg

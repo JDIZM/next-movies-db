@@ -1,8 +1,13 @@
 'use client';
 
 import { useGenreDistributionQuery } from '@/lib/features/movies/moviesSlice';
-import { Bar, BarChart, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { ChartConfig, ChartContainer } from '@/app/components/charts/chart';
+import { Bar, BarChart, XAxis, YAxis, Tooltip } from 'recharts';
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from '@/app/components/charts/chart';
 
 const chartConfig = {
   genreDistribution: {
@@ -23,15 +28,17 @@ export function Component() {
     );
 
   return (
-    <ChartContainer config={chartConfig} className='min-h-[300px] w-full'>
-      <ResponsiveContainer width='100%' height={300}>
-        <BarChart data={data}>
-          <XAxis dataKey='name' />
-          <YAxis />
-          <Tooltip />
-          <Bar dataKey='value' fill='var(--color-genreDistribution)' />
-        </BarChart>
-      </ResponsiveContainer>
+    <ChartContainer config={chartConfig} className='min-h-[200px] w-full'>
+      <BarChart data={data} layout='vertical' margin={{ left: 20, right: 20, top: 20, bottom: 20 }}>
+        <XAxis type='number' />
+        <YAxis type='category' dataKey='name' width={80} />
+        <ChartTooltip
+          content={
+            <ChartTooltipContent className='rounded-lg bg-gray-800 p-2 text-white shadow-lg' />
+          }
+        />
+        <Bar dataKey='value' fill='var(--color-genreDistribution)' />
+      </BarChart>
     </ChartContainer>
   );
 }

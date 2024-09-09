@@ -16,9 +16,9 @@ export function TrendingMovies() {
     );
 
   return (
-    <section className='py-10'>
-      <h2 className='mb-6 text-3xl font-bold'>Trending Movies</h2>
-      <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+    <section className='mx-auto max-w-7xl px-2 py-6 sm:px-4 md:px-6 lg:px-8'>
+      <h2 className='mb-4 text-2xl font-bold sm:text-3xl'>Trending Movies</h2>
+      <div className='grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
         {results?.map((movie: Movie, index: number) => (
           <Link
             href={`/movie/${movie.id}`}
@@ -30,18 +30,18 @@ export function TrendingMovies() {
                 src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
                 alt={movie.title}
                 fill
-                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+                sizes='(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw'
                 className='object-cover'
-                priority={index === 0 || index === 1 || index === 2}
-                loading={index === 0 || index === 1 || index === 2 ? 'eager' : 'lazy'}
+                priority={index < 4}
+                loading={index < 4 ? 'eager' : 'lazy'}
               />
             </div>
-            <div className='p-4'>
-              <h3 className='mb-2 text-lg font-semibold'>{movie.title}</h3>
-              <p className='mb-2 text-sm text-gray-600'>{movie.release_date}</p>
+            <div className='p-2 sm:p-3'>
+              <h3 className='mb-1 truncate text-sm font-semibold sm:text-base'>{movie.title}</h3>
+              <p className='mb-1 text-xs text-gray-600 sm:text-sm'>{movie.release_date}</p>
               <div className='flex items-center'>
                 <span className='mr-1 text-yellow-500'>★</span>
-                <span>{movie.vote_average.toFixed(1)}</span>
+                <span className='text-xs sm:text-sm'>{movie.vote_average.toFixed(1)}</span>
               </div>
             </div>
           </Link>
