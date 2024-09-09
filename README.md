@@ -14,6 +14,11 @@ Frontend:
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [Recharts](https://recharts.org/en-US/)
 
+API:
+
+- [The Movie Database API](https://www.themoviedb.org/documentation/api)
+- [Next.js API Route Handlers](https://nextjs.org/docs/app/building-your-application/routing/route-handlers)
+
 Styling:
 
 - [Tailwind CSS](https://tailwindcss.com/)
@@ -30,6 +35,8 @@ Tooling:
 ## Getting Started
 
 This project uses Volta.sh to manage npm versions. If you don't have it installed please see the [Volta.sh](https://volta.sh/) website for installation instructions.
+
+copy the `.env.example` file to `.env` and add your API key from [The Movie Database API](https://www.themoviedb.org/documentation/api).
 
 ```
 # install dependencies
