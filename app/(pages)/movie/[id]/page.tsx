@@ -1,14 +1,14 @@
-'use client';
 import { FC } from 'react';
 import { DisplayMovie } from '@/app/components/movies/movie/display-movie';
-import { useParams } from 'next/navigation';
 
-const Page: FC = () => {
-  const { id } = useParams();
+interface PageProperties {
+  params: { id: string };
+}
 
+const Page: FC<PageProperties> = ({ params }) => {
   return (
     <div className='w-full'>
-      <DisplayMovie query={id as string} page={1} />
+      <DisplayMovie id={params.id} page={1} />
     </div>
   );
 };
